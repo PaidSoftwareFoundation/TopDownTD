@@ -39,12 +39,12 @@ public class UnitLogic : MonoBehaviour {
 		print ("collision");
         if (faction == "red")
         {
-            if (other.gameObject.tag == "Blue")
+            if (other.gameObject.tag == "blue")
                 Destroy(gameObject);
         }
         else if (faction == "blue")
         {
-            if (other.gameObject.tag == "Red")
+            if (other.gameObject.tag == "red")
                 Destroy(gameObject);
         }
     }
