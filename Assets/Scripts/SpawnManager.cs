@@ -3,25 +3,26 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-    public GameObject unit;
+    public GameObject runit;
+    public GameObject bunit;
+    GameObject unit;
+
     public static string lane;
 	// Use this for initialization
     public void pressed(string x)
     {
-        if (x == "Blue")
+        if (x == "blue")
         {
-            createUnit("blue", 50);
-            Debug.Log("called pressed");
+            createUnit("blue", -500, bunit);
         }
-        else if (x == "Red")
+        else if (x == "red")
         {
-            createUnit("red", 1800);
+            createUnit("red", 1000, runit);
         }
     }
     // Update is called once per frames
-    void createUnit(string faction, int z) {
-        Debug.Log("called createUnit");
-
+    void createUnit(string faction, int z, GameObject aunit) {
+        unit = aunit;
         float x = Random.value;
         GameObject spawned_unit;
         if (x <= 0.33)
