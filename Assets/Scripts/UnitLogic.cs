@@ -36,7 +36,7 @@ public class UnitLogic : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-		print ("collision");
+		
         if (faction == "red")
         {
             if (other.gameObject.tag == "blue")
