@@ -39,7 +39,7 @@ public class UnitLogic : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-		print ("collision");
+		
         if (faction == "red")
         {
             if (other.gameObject.tag == "blue")
@@ -48,6 +48,7 @@ public class UnitLogic : MonoBehaviour {
                 if (health < 1)
                     Destroy(gameObject);
             }
+
         }
         else if (faction == "blue")
         {
