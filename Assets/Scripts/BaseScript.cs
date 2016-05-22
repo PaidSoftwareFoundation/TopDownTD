@@ -7,7 +7,7 @@ public class BaseScript : MonoBehaviour {
     public Text healthText;
     public GameObject redWins;
     public GameObject blueWins;
-    int health = 10000;
+    int health = 3000;
     int dead = 0;
 	public GameObject explosion;
 	// Use this for initialization
@@ -20,17 +20,18 @@ public class BaseScript : MonoBehaviour {
         
         if (health <= 0)
         {
+			if(gameObject.tag == "red")
+			{
+				redWins.SetActive(true);
+			}
+			else
+			{
+				blueWins.SetActive(true);
+			}
 			Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
             healthText.gameObject.SetActive(false);
-            if(gameObject.tag == "red")
-            {
-                redWins.SetActive(true);
-            }
-            else
-            {
-                blueWins.SetActive(true);
-            }
+            
         }
 
         if (gameObject.tag == "red")
