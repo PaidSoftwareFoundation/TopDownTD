@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class BaseScript : MonoBehaviour {
 
     public Text healthText;
+    public GameObject redWins;
+    public GameObject blueWins;
     int health = 10000;
     int dead = 0;
 	public GameObject explosion;
@@ -21,6 +23,14 @@ public class BaseScript : MonoBehaviour {
 			Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
             healthText.gameObject.SetActive(false);
+            if(gameObject.tag == "red")
+            {
+                redWins.SetActive(true);
+            }
+            else
+            {
+                blueWins.SetActive(true);
+            }
         }
 
         if (gameObject.tag == "red")

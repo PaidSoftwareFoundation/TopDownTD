@@ -50,14 +50,14 @@ public class UnitLogic : MonoBehaviour {
             {
                 Camera.main.GetComponent<EconomyManager>().red_money += 10;
                 Camera.main.GetComponent<EconomyManager>().blue_money -= 10;
-                Destroy(gameObject);
+                die();
 
             }
             else if (faction == "blue")
             {
                 Camera.main.GetComponent<EconomyManager>().blue_money += 10;
                 Camera.main.GetComponent<EconomyManager>().red_money -= 10;
-                Destroy(gameObject);
+                die();
             }
         }
 
@@ -82,15 +82,18 @@ public class UnitLogic : MonoBehaviour {
         }
     }
 
-    void die()
+    public void die()
     {
         Destroy(gameObject);
         float f = Random.value;
         if (f <= 0.333)
-        {
-            if(gameObject.tag == "red")
+        {       
+           if (gameObject.tag == "red")
                 Camera.main.GetComponent<EconomyManager>().red_deadBodies += 1;
-            else
+        }
+        else if(f >= 0.666)
+        {
+            if (gameObject.tag == "blue")
                 Camera.main.GetComponent<EconomyManager>().blue_deadBodies += 1;
         }
     }
