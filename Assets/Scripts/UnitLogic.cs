@@ -7,8 +7,9 @@ public class UnitLogic : MonoBehaviour {
     public string faction;
 
     public int multiplier;
-    public int moveSpeed = 2;
+    public double moveSpeed = 2;
     public int health = 1;
+    public int damage = 1;
 
     void Start () {
 	    if(faction == "red")
@@ -25,28 +26,48 @@ public class UnitLogic : MonoBehaviour {
 	void Update () {
         if (lane == "middle")
         {
-            transform.position += new Vector3(0,0,multiplier) * 2;
+            transform.position += new Vector3(0,0,multiplier) * (int) moveSpeed;
         }
         else if(lane == "right")
         {
-            transform.position += new Vector3(-0.42f,0,multiplier) * 2;
+            transform.position += new Vector3(-0.42f,0,multiplier) * (int) moveSpeed;
         }
         else if (lane == "left")
         {
-            transform.position += new Vector3(0.42f,0,multiplier) * 2;
+            transform.position += new Vector3(0.42f,0,multiplier) * (int) moveSpeed;
         }
     }
 
 	void OnTriggerEnter(Collider other)
     {
-		
+        if (other.gameObject.tag == "wall")
+        {
+            Destroy(gameObject);
+        }
+        else if(other.gameObject.tag == "grave")
+        {
+            if (faction == "red")
+            {
+                Camera.main.GetComponent<EconomyManager>().red_money += 10;
+                Camera.main.GetComponent<EconomyManager>().blue_money -= 10;
+                Destroy(gameObject);
+
+            }
+            else if (faction == "blue")
+            {
+                Camera.main.GetComponent<EconomyManager>().blue_money += 10;
+                Camera.main.GetComponent<EconomyManager>().red_money -= 10;
+                Destroy(gameObject);
+            }
+        }
+
         if (faction == "red")
         {
             if (other.gameObject.tag == "blue")
             {
-                health -= 1;
+                health -= other.GetComponent<UnitLogic>().damage;
                 if (health < 1)
-                    Destroy(gameObject);
+                    die();
             }
 
         }
@@ -54,10 +75,23 @@ public class UnitLogic : MonoBehaviour {
         {
             if (other.gameObject.tag == "red")
             {
-                health -= 1;
+                health -= other.GetComponent<UnitLogic>().damage;
                 if (health < 1)
-                    Destroy(gameObject);
+                    die();
             }
+        }
+    }
+
+    void die()
+    {
+        Destroy(gameObject);
+        float f = Random.value;
+        if (f <= 0.333)
+        {
+            if(gameObject.tag == "red")
+                Camera.main.GetComponent<EconomyManager>().red_deadBodies += 1;
+            else
+                Camera.main.GetComponent<EconomyManager>().blue_deadBodies += 1;
         }
     }
 
