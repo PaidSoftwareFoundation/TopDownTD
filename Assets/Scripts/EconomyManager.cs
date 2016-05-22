@@ -52,7 +52,7 @@ public class EconomyManager : MonoBehaviour {
             Invoke("disable", 5);
             createBlueBonusDetonator();
             blueLvl++;
-            upgradeCapBlue += 10000 * blueLvl;
+            upgradeCapBlue += 10000 * blueLvl * blueLvl;
             if(blueLvl > 2)
             {
                 blueBase.SetActive(true);

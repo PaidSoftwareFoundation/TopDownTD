@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            createUnit("red", 1000, rsoldier, 70, 9, 4*multiplierRed, 1250);
+            createUnit("red", 1000, rsoldier, 30, 9, 4*multiplierRed, 1250);
 
         }
         else if (Input.GetKeyDown(KeyCode.W))
@@ -49,12 +49,12 @@ public class SpawnManager : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            createUnit("red", 1000, rgrenade, 120,(int) (15*multiplierRed), 2, 2600);
+            createUnit("red", 1000, rgrenade, 60,(int) (15*multiplierRed), 2, 2600);
 
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            createUnit("red", 1000, rbomber, (int)(90 * (multiplierRed -.3)), 70, 2, 3200);
+            createUnit("red", 1000, rbomber, (int)(65 * (multiplierRed -.3)), 70, 2, 3200);
 
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.U))
         {
-            createUnit("blue", -350, bsoldier, 70, 9, 4 * multiplierBlue, 1250);
+            createUnit("blue", -350, bsoldier, 30, 9, 4 * multiplierBlue, 1250);
 
         }
         else if (Input.GetKeyDown(KeyCode.I))
