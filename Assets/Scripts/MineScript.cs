@@ -26,6 +26,8 @@ public class MineScript : MonoBehaviour {
 		
 		if (this.tag == "blueMine" && other.gameObject.tag == "red") {
 			Destroy (other.gameObject);
+
+
 		} else if (this.tag == "redMine" && other.gameObject.tag == "blue") {
 			Destroy(other.gameObject);
 		}

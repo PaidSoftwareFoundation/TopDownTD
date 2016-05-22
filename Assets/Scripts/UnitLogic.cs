@@ -35,6 +35,13 @@ public class UnitLogic : MonoBehaviour {
         {
             transform.position += new Vector3(0.42f,0,multiplier) * 2;
         }
+
+
+		if (health < 1) {
+			Destroy(gameObject);
+		}
+
+
     }
 
 	void OnTriggerEnter(Collider other)
@@ -45,8 +52,6 @@ public class UnitLogic : MonoBehaviour {
             if (other.gameObject.tag == "blue")
             {
                 health -= 1;
-                if (health < 1)
-                    Destroy(gameObject);
             }
 
         }
@@ -55,8 +60,6 @@ public class UnitLogic : MonoBehaviour {
             if (other.gameObject.tag == "red")
             {
                 health -= 1;
-                if (health < 1)
-                    Destroy(gameObject);
             }
         }
     }

@@ -15,15 +15,11 @@ public class SpawnManager : MonoBehaviour {
         {
             Camera.main.GetComponent<EconomyManager>().red_money -= 5;
             createUnit("red", 1000, runit);
-            Debug.Log("Hello");
-
         }
         else if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.O) ||  Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L))
         {
             Camera.main.GetComponent<EconomyManager>().blue_money -= 5;
-            createUnit("blue", -500, bunit);
-            Debug.Log("Hello");
-
+			createUnit ("blue", -500, bunit);
         }
     }
     void createUnit(string faction, int z, GameObject aunit) {
