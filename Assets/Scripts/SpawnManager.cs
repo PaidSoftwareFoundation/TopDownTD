@@ -8,19 +8,24 @@ public class SpawnManager : MonoBehaviour {
     GameObject unit;
 
     public static string lane;
-	// Use this for initialization
-    public void pressed(string x)
+
+    void Update()
     {
-        if (x == "blue")
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
-            createUnit("blue", -500, bunit);
-        }
-        else if (x == "red")
-        {
+            Camera.main.GetComponent<EconomyManager>().red_money -= 5;
             createUnit("red", 1000, runit);
+            Debug.Log("Hello");
+
+        }
+        else if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.O) ||  Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L))
+        {
+            Camera.main.GetComponent<EconomyManager>().blue_money -= 5;
+            createUnit("blue", -500, bunit);
+            Debug.Log("Hello");
+
         }
     }
-    // Update is called once per frames
     void createUnit(string faction, int z, GameObject aunit) {
         unit = aunit;
         float x = Random.value;
