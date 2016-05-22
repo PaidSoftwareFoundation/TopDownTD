@@ -9,6 +9,9 @@ public class MineScript : MonoBehaviour {
     public int baseIncr = 200;
     public int redLvl = Camera.main.gameObject.GetComponent<EconomyManager>().redLvl;
     public int blueLvl = Camera.main.gameObject.GetComponent<EconomyManager>().blueLvl;
+	public GameObject explosion;
+
+
     // Use this for initialization
     void Start () {
 		InvokeRepeating ("generateMoney", 0.5f, 0.5f);
@@ -20,6 +23,7 @@ public class MineScript : MonoBehaviour {
     void Update () {
         if (stat <= 0)
         {
+			Instantiate (explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
             healthText.gameObject.SetActive(false);
         }
