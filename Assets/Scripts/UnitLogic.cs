@@ -47,21 +47,18 @@ public class UnitLogic : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
     {
 		
-        if (faction == "red")
-        {
-            if (other.gameObject.tag == "blue")
-            {
-                health -= 1;
-            }
+		if (faction == "red") {
+			if (other.gameObject.tag == "blue") {
+				health -= 1;
+			}
 
-        }
-        else if (faction == "blue")
-        {
-            if (other.gameObject.tag == "red")
-            {
-                health -= 1;
-            }
-        }
+		} else if (faction == "blue") {
+			if (other.gameObject.tag == "red") {
+				health -= 1;
+			}
+		} else if (other.gameObject.tag == "DestroyZone") {
+			Destroy (gameObject);	
+		}
     }
 
 }

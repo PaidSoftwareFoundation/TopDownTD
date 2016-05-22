@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MineScript : MonoBehaviour {
 
+	int health = 10;
+
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("generateMoney", 0.5f, 0.5f);
@@ -10,7 +12,9 @@ public class MineScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (health < 1) {
+			Destroy (gameObject);
+		}
 	}
 
 	void generateMoney() {
@@ -22,15 +26,11 @@ public class MineScript : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter(Collider other){
-		
-		if (this.tag == "blueMine" && other.gameObject.tag == "red") {
+	void OnTriggerEnter(Collider other){		
+		if ((this.tag == "blueMine" && other.gameObject.tag == "red") || (this.tag == "redMine" && other.gameObject.tag == "blue")) {
+			health -= 1;
 			Destroy (other.gameObject);
-
-
-		} else if (this.tag == "redMine" && other.gameObject.tag == "blue") {
-			Destroy(other.gameObject);
-		}
+		} 
 	}
 
 
