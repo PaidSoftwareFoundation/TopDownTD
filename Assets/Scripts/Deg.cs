@@ -17,7 +17,7 @@ public class Deg : MonoBehaviour {
         if (this.tag != other.gameObject.tag)
         {
             stat -= other.GetComponent<UnitLogic>().damage;
-            Destroy(other.gameObject);
+            other.GetComponent<UnitLogic>().die();
         }
     }
 }

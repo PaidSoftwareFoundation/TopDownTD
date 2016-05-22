@@ -42,7 +42,7 @@ public class MineScript : MonoBehaviour {
 	}
     void generateHealth()
     {
-        stat += 2;
+        stat += 1;
     }
 
 
@@ -51,9 +51,8 @@ public class MineScript : MonoBehaviour {
 		
 		if (this.tag != other.gameObject.tag) {
             stat -= other.GetComponent<UnitLogic>().damage;
-            Destroy(other.gameObject);    
-		}
+            other.GetComponent<UnitLogic>().die();
+        }
 	}
-
 
 }
